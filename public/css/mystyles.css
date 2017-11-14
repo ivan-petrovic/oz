@@ -1,0 +1,6 @@
+table td img {
+  visibility: hidden;
+}
+table tr:hover td img {
+  visibility: visible;
+}
