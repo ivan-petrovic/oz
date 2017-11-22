@@ -3,9 +3,9 @@
 $url = parse_url(getenv("DATABASE_URL"));
 
 $host = $url["host"];
+$port = $url["port"];
 $username = $url["user"];
 $password = $url["pass"];
-$port = $url["port"];
 $database = substr($url["path"], 1);
 
 return [
@@ -86,6 +86,7 @@ return [
             'charset'  => 'utf8',
             'prefix'   => '',
             'schema'   => 'public',
+            'sslmode' => 'prefer',
         ],
 
         'sqlsrv' => [
