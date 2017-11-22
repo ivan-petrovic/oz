@@ -79,7 +79,6 @@ return [
         'pgsql' => [
             'driver'   => 'pgsql',
             'host'     => $host,
-            'port'     => $port,
             'database' => $database,
             'username' => $username,
             'password' => $password,
