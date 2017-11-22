@@ -5,6 +5,7 @@ $url = parse_url(getenv("DATABASE_URL"));
 $host = $url["host"];
 $username = $url["user"];
 $password = $url["pass"];
+$port = $url["port"];
 $database = substr($url["path"], 1);
 
 return [
@@ -78,6 +79,7 @@ return [
         'pgsql' => [
             'driver'   => 'pgsql',
             'host'     => $host,
+            'port'     => $port,
             'database' => $database,
             'username' => $username,
             'password' => $password,
