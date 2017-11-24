@@ -1,5 +1,7 @@
 <?php
 
+$dbUrl = parse_url(env("JAWSDB_URL"));
+/*
 $url = parse_url(getenv("DATABASE_URL"));
 
 $host = $url["host"];
@@ -7,7 +9,7 @@ $port = $url["port"];
 $username = $url["user"];
 $password = $url["pass"];
 $database = substr($url["path"], 1);
-
+*/
 return [
 
     /*
@@ -21,8 +23,7 @@ return [
     |
     */
 
-    // 'default' => env('DB_CONNECTION', 'mysql'),
-    'default' => env('DB_CONNECTION', 'pgsql'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -50,11 +51,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'host' => isset($dbUrl["host"]) ? $dbUrl["host"] : env('DB_HOST', '127.0.0.1'),
+            'port' => isset($dbUrl["port"]) ? $dbUrl["port"] : env('DB_PORT', '3306'),
+            'database' => isset($dbUrl["path"]) ? ltrim($dbUrl["path"], '/') : env('DB_DATABASE', 'forge'),
+            'username' => isset($dbUrl["user"]) ? $dbUrl["user"] : env('DB_USERNAME', 'forge'),
+            'password' => isset($dbUrl["pass"]) ? $dbUrl["pass"] : env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -62,7 +63,7 @@ return [
             'strict' => true,
             'engine' => null,
         ],
-/*
+
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),
@@ -73,18 +74,6 @@ return [
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
-            'sslmode' => 'prefer',
-        ],
-*/
-        'pgsql' => [
-            'driver'   => 'pgsql',
-            'host'     => $host,
-            'database' => $database,
-            'username' => $username,
-            'password' => $password,
-            'charset'  => 'utf8',
-            'prefix'   => '',
-            'schema'   => 'public',
             'sslmode' => 'prefer',
         ],
 
