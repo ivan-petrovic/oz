@@ -1,7 +1,8 @@
 <?php
 
 Route::get('/', function() {
-    // return view('welcome');
+    return view('welcome');
+    /*
     $url = parse_url(getenv("DATABASE_URL"));
 
     $host = $url["host"];
@@ -11,6 +12,7 @@ Route::get('/', function() {
     $database = substr($url["path"], 1);
 
     return $host . " " .  $port . " " . $username . " " . $password . " " . $database;
+    */
 });
 
 Route::get('/firma', 'FirmasController@index')->name('lista_firmi');
