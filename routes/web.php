@@ -2,17 +2,6 @@
 
 Route::get('/', function() {
     return view('welcome');
-    /*
-    $url = parse_url(getenv("DATABASE_URL"));
-
-    $host = $url["host"];
-    $port = $url["port"];
-    $username = $url["user"];
-    $password = $url["pass"];
-    $database = substr($url["path"], 1);
-
-    return $host . " " .  $port . " " . $username . " " . $password . " " . $database;
-    */
 });
 
 Route::get('/firma', 'FirmasController@index')->name('lista_firmi');

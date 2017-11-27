@@ -1,15 +1,9 @@
 <?php
 
-$dbUrl = parse_url(env("JAWSDB_URL"));
-/*
-$url = parse_url(getenv("DATABASE_URL"));
+if (!is_null(env("JAWSDB_URL"))) {
+  $dbUrl = parse_url(env("JAWSDB_URL"));
+}
 
-$host = $url["host"];
-$port = $url["port"];
-$username = $url["user"];
-$password = $url["pass"];
-$database = substr($url["path"], 1);
-*/
 return [
 
     /*
